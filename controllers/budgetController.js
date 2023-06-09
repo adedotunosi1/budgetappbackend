@@ -10,7 +10,7 @@ const JWT_SECRET = "iubdfunvuiyd87368792y3rgybnia";
 const budget_signup = async (req, res) => {
     const {fullname, username, password, email} = req.body;
     const encryptedPassword = await bcrypt.hash(password, 10);
-    console.log(req.body);
+    console.log(req.body); 
     try {
       const oldUser = await BudgetUsers.findOne({ username });
       if(oldUser){
@@ -32,7 +32,7 @@ const budget_login = async (req, res, next) => {
     const {username, password} = req.body;
   
     const user = await BudgetUsers.findOne({ username});
-    if(!user){
+    if(!user){ 
       return res.json({error: "User does not exist"});
     }
     if ( await bcrypt.compare(password, user.password)){
